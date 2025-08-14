@@ -1,0 +1,20 @@
+{
+  "contatos": [
+    {
+      "id": "b01c",
+      "name": "Gerson",
+      "email": "gerson@iesb.br"
+    },
+    {
+      "name": "Gerson Senna",
+      "email": "gersonsennaa@gmail.com",
+      "instagram": "@gerson.senna",
+      "id": "836b"
+    },
+    {
+      "id": "dd2f",
+      "name": "Hugo",
+      "email": "Hugo@iesb.br"
+    }
+  ]
+}
