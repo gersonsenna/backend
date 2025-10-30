@@ -71,6 +71,14 @@ describe("Testes do recurso /tarefas", () => {
     expect(response.body.msg).toBe("Tarefa não encontrada");
   });
 
+  test("PUT /id deve retornar 422", async () => {
+    const response = await request
+      .put(`${url}/${id}`)
+      .send({ nome: "", concluida: true });
+    expect(response.status).toBe(422);
+    expect(response.body.nome).toBe("Nome da tarefa é obrigatório");
+  });
+
   test("DELETE /id deve retornar 204", async () => {
     const response = await request.delete(`${url}/${id}`);
     expect(response.status).toBe(204);
@@ -85,6 +93,23 @@ describe("Testes do recurso /tarefas", () => {
   test("DELETE /id deve retornar 404", async () => {
     const response = await request.delete(`${url}/${id}`);
     expect(response.status).toBe(404);
+  });
+  test("DELETE /id deve retornar 204", async () => {
+    const response = await request.delete(`${url}/${id}`);
+    expect(response.status).toBe(204);
+    expect(response.body).toEqual({});
+  });
+  
+  test("DELETE /id deve retornar 400", async () => {
+    const response = await request.delete(`${url}/0`);
+    expect(response.status).toBe(400);
+    expect(response.body.msg).toBe("Parâmetro inválido");
+  });
+  
+  test("DELETE /id deve retornar 404", async () => {
+    const response = await request.delete(`${url}/${id}`);
+    expect(response.status).toBe(404);
+    expect(response.body.msg).toBe("Produto não encontrado");
   });
 
 });
